@@ -33,15 +33,14 @@ import java.util.Optional;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 
-@PageTitle("Master-Detail")
-@Route("/:samplePersonID?/:action?(edit)")
-@Menu(order = 0, icon = "line-awesome/svg/columns-solid.svg")
-@RouteAlias("")
+@PageTitle("Person List")
+@Route("persons/:samplePersonID?/:action?(edit)")
+@Menu(order = 1, icon = "line-awesome/svg/columns-solid.svg", title = "Person List")
 @Uses(Icon.class)
 public class MasterDetailView extends Div implements BeforeEnterObserver {
 
     private final String SAMPLEPERSON_ID = "samplePersonID";
-    private final String SAMPLEPERSON_EDIT_ROUTE_TEMPLATE = "/%s/edit";
+    private final String SAMPLEPERSON_EDIT_ROUTE_TEMPLATE = "persons/%s/edit";
 
     private final Grid<SamplePerson> grid = new Grid<>(SamplePerson.class, false);
 
@@ -65,6 +64,7 @@ public class MasterDetailView extends Div implements BeforeEnterObserver {
 
     public MasterDetailView(SamplePersonService samplePersonService) {
         this.samplePersonService = samplePersonService;
+        setId("master-detail-view");
         addClassNames("master-detail-view");
 
         // Create UI
@@ -165,18 +165,27 @@ public class MasterDetailView extends Div implements BeforeEnterObserver {
         editorLayoutDiv.setClassName("editor-layout");
 
         Div editorDiv = new Div();
+        editorDiv.setId("editor");
         editorDiv.setClassName("editor");
         editorLayoutDiv.add(editorDiv);
 
         FormLayout formLayout = new FormLayout();
         firstName = new TextField("First Name");
+        firstName.setId("firstName");
         lastName = new TextField("Last Name");
+        lastName.setId("lastName");
         email = new TextField("Email");
+        email.setId("email");
         phone = new TextField("Phone");
+        phone.setId("phone");
         dateOfBirth = new DatePicker("Date Of Birth");
+        dateOfBirth.setId("dateOfBirth");
         occupation = new TextField("Occupation");
+        occupation.setId("occupation");
         role = new TextField("Role");
+        role.setId("role");
         important = new Checkbox("Important");
+        important.setId("important");
         formLayout.add(firstName, lastName, email, phone, dateOfBirth, occupation, role, important);
 
         editorDiv.add(formLayout);
