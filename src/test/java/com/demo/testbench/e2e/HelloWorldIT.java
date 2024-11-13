@@ -5,14 +5,12 @@ import com.vaadin.flow.component.notification.testbench.NotificationElement;
 import com.vaadin.flow.component.textfield.testbench.TextFieldElement;
 import com.vaadin.testbench.BrowserTest;
 import com.vaadin.testbench.BrowserTestBase;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.interactions.Actions;
 
 import java.io.IOException;
 
-public class HelloWorldIT extends AbstractIT {
+public class HelloWorldIT extends BrowserTestBase {
 
     @BeforeEach
     public void setup() throws Exception {
@@ -42,8 +40,6 @@ public class HelloWorldIT extends AbstractIT {
     public void writeNameAndClickButton() {
         TextFieldElement name = $(TextFieldElement.class).first();
         name.setValue("Onur");
-
-
 
         // Find the first button (<vaadin-button>) on the page
         ButtonElement button = $(ButtonElement.class).first();

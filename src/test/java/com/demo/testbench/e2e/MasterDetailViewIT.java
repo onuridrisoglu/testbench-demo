@@ -3,14 +3,9 @@ package com.demo.testbench.e2e;
 import com.demo.application.data.SamplePerson;
 import com.demo.testbench.e2e.masterdetail.MasterDetailViewElement;
 import com.vaadin.flow.component.notification.testbench.NotificationElement;
-import com.vaadin.testbench.*;
-import org.junit.jupiter.api.AfterEach;
+import com.vaadin.testbench.BrowserTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.extension.RegisterExtension;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.LocalDate;
 
