@@ -1,4 +1,4 @@
-package com.demo.testbench.unit;
+package com.demo.testbench.unit.tester;
 
 import com.demo.application.components.StringListField;
 import com.vaadin.browserless.ComponentTester;

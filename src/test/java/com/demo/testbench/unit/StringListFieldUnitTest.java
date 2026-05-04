@@ -1,10 +1,8 @@
 package com.demo.testbench.unit;
 
 import com.demo.application.components.StringListField;
-import com.demo.application.views.helloworld.HelloWorldView;
+import com.demo.testbench.unit.tester.StringListFieldTester;
 import com.vaadin.browserless.SpringBrowserlessTest;
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.notification.Notification;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
