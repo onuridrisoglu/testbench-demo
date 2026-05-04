@@ -15,7 +15,9 @@ public abstract class AbstractIT extends BrowserTestBase implements DriverSuppli
     @Override
     public WebDriver createDriver() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");
+        if (Boolean.getBoolean("headless")) {
+            options.addArguments("--headless=new");
+        }
         return TestBench.createDriver(new ChromeDriver(options));
     }
 }

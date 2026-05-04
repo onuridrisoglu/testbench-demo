@@ -4,11 +4,12 @@ import com.demo.application.data.SamplePersonRepository;
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.theme.Theme;
 import javax.sql.DataSource;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.sql.init.SqlDataSourceScriptDatabaseInitializer;
-import org.springframework.boot.autoconfigure.sql.init.SqlInitializationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 /**
  * The entry point of the Spring Boot application.
@@ -25,16 +26,12 @@ public class Application implements AppShellConfigurator {
         SpringApplication.run(Application.class, args);
     }
     @Bean
-    SqlDataSourceScriptDatabaseInitializer dataSourceScriptDatabaseInitializer(DataSource dataSource,
-            SqlInitializationProperties properties, SamplePersonRepository repository) {
+    ApplicationRunner conditionalDataInitializer(DataSource dataSource,
+            SamplePersonRepository repository) {
         // This bean ensures the database is only initialized when empty
-        return new SqlDataSourceScriptDatabaseInitializer(dataSource, properties) {
-            @Override
-            public boolean initializeDatabase() {
-                if (repository.count() == 0L) {
-                    return super.initializeDatabase();
-                }
-                return false;
+        return args -> {
+            if (repository.count() == 0L) {
+                new ResourceDatabasePopulator(new ClassPathResource("data.sql")).execute(dataSource);
             }
         };
     }

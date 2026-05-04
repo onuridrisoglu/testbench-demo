@@ -23,7 +23,8 @@ public class HelloWorldView extends VerticalLayout {
         Button button = new Button("Say hello");
         button.addClickListener(evt -> sayHello(textfield.getValue()));
 
-        add(textfield, button);
+        //add(textfield, button);
+        add(button,textfield);
     }
 
     private void sayHello(String name) {

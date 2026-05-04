@@ -33,7 +33,7 @@ public class HelloWorldIT extends BrowserTestBase {
         Assertions.assertTrue(notification.isOpen());
 
         // Check that notification says "Hello Anonymous"
-        Assertions.assertEquals("Hello Anonymous", notification.getText());
+        Assertions.assertEquals("Hello Anonymous1", notification.getText());
     }
 
     @BrowserTest
@@ -52,7 +52,7 @@ public class HelloWorldIT extends BrowserTestBase {
         // Check that notification is displayed
         Assertions.assertTrue(notification.isOpen());
 
-        Assertions.assertEquals("Hello Onur", notification.getText());
+        Assertions.assertEquals("Hello Onur1", notification.getText());
     }
 
     @BrowserTest
